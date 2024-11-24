@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2C3E50;
+  --secondary: #E74C3C;
+  --light: #ECF0F1;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--secondary);
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px var(--secondary), 0 0 40px var(--secondary);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
