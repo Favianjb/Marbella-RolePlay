@@ -1,6 +1,3 @@
-<html><head><base href="." />
-<meta charset="UTF-8">
-<title>Marbella - Servidor de SA-MP Roleplay</title>
 <style>
 :root {
   --primary: #2C3E50;
@@ -127,99 +124,63 @@ footer {
 .toast.show {
   opacity: 1;
 }
-</style>
-</head>
-<body>
 
-<div class="toast" id="toast">IP copiada al portapapeles</div>
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 3rem;  /* Ajustar el tamaño de la fuente */
+  }
 
-<div class="hero">
-  <div class="hero-content">
-    <h1>Marbella Roleplay</h1>
-    <p>Sumérgete en una experiencia única de roleplay en nuestro SV compatible con Android y PC</p>
-    <button class="btn" id="copyIpButton">Conectar al Servidor</button>
-    <a href="https://discord.gg/UgftW72Y" class="btn">Unirse al Discord</a>
-  </div>
-</div>
+  .hero-content {
+    padding: 1.5rem;  /* Reducir el padding */
+  }
 
-<section class="features">
-  <h2>Características de Marbella RP</h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <h3>Sistema de Empleos</h3>
-      <p>Múltiples trabajos legales e ilegales para elegir</p>
-    </div>
-    <div class="feature-card">
-      <h3>Economía Realista</h3>
-      <p>Sistema económico dinámico con inflación y mercado de jugadores</p>
-    </div>
-    <div class="feature-card">
-      <h3>Sistemas de Casas</h3>
-      <p>Compra y personaliza tu propia casa en el servidor</p>
-    </div>
-    <div class="feature-card">
-      <h3>Facciones</h3>
-      <p>Unete a la policía de los Santos, USMC, Mecanicos, Médicos o crea tu propia banda ilegal.</p>
-    </div>
-  </div>
-</section>
-
-<div class="server-stats">
-  <h2>Estadísticas de Marbella</h2>
-  <div class="stats-grid">
-    <div>
-      <h3>Jugadores Online</h3>
-      <p id="players-online">Loading...</p>
-    </div>
-    <div>
-      <h3>Récord de Jugadores</h3>
-      <p>100+</p>
-    </div>
-    <div>
-      <h3>Usuarios Registrados</h3>
-      <p>1000+</p>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2024 Marbella Roleplay. Todos los derechos reservados.</p>
-  <p>GTA: San Andreas y SA-MP son marcas registradas de sus respectivos propietarios.</p>
-</footer>
-
-<script>
-// Simulated server stats update
-function updateServerStats() {
-  const playersOnline = Math.floor(Math.random() * 50) + 20; // Simulated player count
-  document.getElementById('players-online').textContent = playersOnline;
+  .btn {
+    padding: 0.8rem 1.6rem;  /* Botones más pequeños */
+  }
 }
 
-// Update stats every 30 seconds
-updateServerStats();
-setInterval(updateServerStats, 30000);
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;  /* Reducción más significativa en pantallas más pequeñas */
+  }
 
-// Copy IP functionality
-document.getElementById('copyIpButton').addEventListener('click', function() {
-  const serverIP = '216.146.25.247:7777';
-  navigator.clipboard.writeText(serverIP).then(() => {
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3000);
-  });
-});
+  .hero-content {
+    padding: 1rem;  /* Reducir aún más el padding */
+  }
 
-// Smooth scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-</script>
+  .features-grid {
+    grid-template-columns: 1fr;  /* Columna única para pantallas más pequeñas */
+  }
 
-</body>
-</html>
+  .stats-grid {
+    grid-template-columns: 1fr;  /* Columna única en las estadísticas */
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;  /* Botones más pequeños */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;  /* Fuente más pequeña para móviles */
+  }
+
+  .hero-content {
+    padding: 0.8rem;  /* Aún menos espacio en pantallas pequeñas */
+  }
+
+  .btn {
+    padding: 0.6rem 1.4rem;  /* Botones pequeños */
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;  /* Solo una columna */
+  }
+
+  footer p {
+    font-size: 0.8rem;  /* Reducir el tamaño del texto del pie de página */
+  }
+}
+</style>
