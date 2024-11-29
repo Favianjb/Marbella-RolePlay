@@ -237,18 +237,18 @@
 
 <script>
   function fetchPlayerStats() {
-    fetch('samp-query.php') // Ruta al script PHP en tu servidor
+    fetch('samp-query.php') // Ruta al archivo PHP en tu servidor
       .then(response => response.json()) // Convierte la respuesta a JSON
       .then(data => {
         const playersOnlineElement = document.getElementById('players-online');
 
-        // Verifica si hubo un error en la respuesta
         if (data.error) {
           console.error(data.error);
           playersOnlineElement.textContent = "Error al obtener datos";
         } else {
-          // Actualiza el número de jugadores en línea
-          playersOnlineElement.textContent = `${data.players}/${data.max_players} jugadores`;
+          const players = data.players ?? 0;
+          const maxPlayers = data.max_players ?? 0;
+          playersOnlineElement.textContent = `${players}/${maxPlayers} jugadores`;
         }
       })
       .catch(error => {
