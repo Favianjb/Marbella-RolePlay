@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marbella Roleplay - Servidor de SA-MP</title>
+  <style>
+    :root {
+      --primary: #2C3E50;
+      --secondary: #E74C3C;
+      --light: #ECF0F1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    /* Ajustes para el fondo de la imagen */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('images/hero.jpg') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Contenido de la hero */
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    /* Ajustes en el tamaño del texto */
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      text-transform: uppercase;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #fff000, 0 0 5px #fff000, 0 0 5px var(--secondary);
+      }
+      to {
+        text-shadow: 0 0 5px blue, 0 0 5px black, 0 0 5px var(--secondary);
+      }
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: transparent;
+      border: 3px solid red;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      margin: 1rem;
+      transition: transform 0.5s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Características */
+    .features {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    /* Ajustes para la cuadrícula de características */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Estadísticas del servidor */
+    .server-stats {
+      background: var(--secondary);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* Ajustes para la cuadrícula de estadísticas */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Pie de página */
+    footer {
+      background: #1a252f;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: var(--light);
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    /* Media Query para pantallas pequeñas (como teléfonos móviles) */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content {
+        padding: 1rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.5rem;
+      }
+
+      .features h2 {
+        font-size: 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="toast" id="toast">IP copiada al portapapeles</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Marbella Roleplay</h1>
+    <p>El servidor que esta fuera de este mundo! 🚀 No te pierdas la oportunidad de unirte al servidor más épico de Samp!</p>
+    <a class="btn" id="copyIpButton">IP del Servidor</a>
+    <a href="https://discord.gg/UgftW72Y" class="btn">Unete al Discord</a>
+    <a href="https://alynsampmobile.pro/" class="btn">Descargar la apk</a>
+    <a href="https://rol.dixel-rp.com/foro/index.php?topic=2832.0" class="btn">Conceptos de Rol</a>
+  </div>
+</div>
+
+<section class="features">
+  <h2>Características de Marbella RP</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>Sistema de Empleos</h3>
+      <p>Múltiples trabajos legales e ilegales para elegir</p>
+    </div>
+    <div class="feature-card">
+      <h3>Economía Realista</h3>
+      <p>Sistema económico dinámico con inflación y mercado de jugadores</p>
+    </div>
+    <div class="feature-card">
+      <h3>Sistemas de Casas</h3>
+      <p>Compra y personaliza tu propia casa en el servidor</p>
+    </div>
+    <div class="feature-card">
+      <h3>Facciones</h3>
+      <p> Unete a LSPD, SASD, USMC, Mecanicos, Médicos o crea tu propia banda ilegal.</p>
+    </div>
+  </div>
+</section>
+
+<div class="server-stats">
+  <h2>Estadísticas de Marbella</h2>
+  <div class="stats-grid">
+    <div>
+      <h3>Jugadores Online</h3>
+      <p id="players-online">Cargando...</p>
+    </div>
+    <div>
+      <h3>Récord de Jugadores Online</h3>
+      <p>100+</p>
+    </div>
+    <div>
+      <h3>Usuarios Registrados</h3>
+      <p>1000+</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024 Marbella Roleplay. Todos los derechos reservados.</p>
+  <p>GTA: San Andreas y SA-MP son marcas registradas de sus respectivos propietarios.</p>
+</footer>
+
+<script>
+  function fetchPlayerStats() {
+    fetch('samp-query.php') // Ruta al script PHP en tu servidor
+      .then(response => response.json()) // Convierte la respuesta a JSON
+      .then(data => {
+        const playersOnlineElement = document.getElementById('players-online');
+
+        // Verifica si hubo un error en la respuesta
+        if (data.error) {
+          console.error(data.error);
+          playersOnlineElement.textContent = "Error al obtener datos";
+        } else {
+          // Actualiza el número de jugadores en línea
+          playersOnlineElement.textContent = `${data.players}/${data.max_players} jugadores`;
+        }
+      })
+      .catch(error => {
+        console.error('Error al consultar el servidor:', error);
+        document.getElementById('players-online').textContent = "Error de conexión";
+      });
+  }
+
+  // Llama a la función al cargar la página y luego cada 30 segundos
+  fetchPlayerStats();
+  setInterval(fetchPlayerStats, 30000);
+</script>
+
+</body>
+</html>
