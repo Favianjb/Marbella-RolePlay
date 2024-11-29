@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *'); // Permite solicitudes desde cualquier origen
 
-$ip = '216.146.25.247'; // Cambia esto por la IP de tu servidor
+$ip = 216.146.25.247; // Cambia esto por la IP de tu servidor
 $port = 7777;           // Cambia esto por el puerto de tu servidor
 
 // URL de la API de Game-State
